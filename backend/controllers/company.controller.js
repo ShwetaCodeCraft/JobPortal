@@ -2,13 +2,13 @@
 import Company from "../models/company.model.js";
 
 // @desc    Register a new company
-// @route   POST /api/company
+// @route   POST /api/v1/company
 export const registerCompany = async (req, res) => {
   try {
     // Check role of the logged-in user
     const { name, description, website, location, logo } = req.body;
 
-    if (!name) {
+    if (!name || !name.trim()) {
       return res.status(400).json({ success: false, message: "Company name is required" });
     }
 

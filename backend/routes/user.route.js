@@ -18,6 +18,7 @@ router.post("/login", loginUser);       // User login
 // Protected routes (need login)
 router.get("/profile", isAuthenticated, getUserProfile); // Get profile
 router.post("/logout", isAuthenticated, logoutUser);     // Logout
-router.put("/profile/update", isAuthenticated, updateProfile); // Update profile
+// auth first -> then file parser -> then controller
+router.patch("/profile/update", isAuthenticated,singleUpload, updateProfile); // Update profile
 
 export default router;

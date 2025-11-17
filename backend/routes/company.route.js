@@ -7,12 +7,13 @@ import {
 } from "../controllers/company.controller.js";
 import isAuthenticated from "../middlewares/auth.js";
 import isRecruiter from "../middlewares/isRecruiter.js"; // new middleware
+import { singleUpload } from "../middlewares/multer.js";
 
 const router = express.Router();
 
 // Recruiter-only routes
 router.post("/", isAuthenticated, isRecruiter, registerCompany);
-router.put("/:id", isAuthenticated, isRecruiter, updateCompany);
+router.patch("/:id", isAuthenticated, isRecruiter,singleUpload, updateCompany);
 
 // Public routes
 router.get("/", getCompanies);

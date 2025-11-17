@@ -1,6 +1,5 @@
 import Job from "../models/job.model.js";
-import Company from "../models/company.model.js"; // <-- missing import
-import Application from "../models/application.model.js";
+import Company from "../models/company.model.js";
 
 
 // Post a new Job
@@ -28,7 +27,7 @@ export const postJob = async (req, res) => {
       salary: Number(salary),
       experienceLevel: Number(experienceLevel),
       position: Number(position) || 1,
-      created_by: req.user.id, // ✅ set from JWT
+      created_by: req.user.id, //  set from JWT
     });
 
     await job.save();
@@ -51,6 +50,14 @@ export const getAllJobs = async (req, res) => {
         { description: { $regex: keyword, $options: "i" } },
       ],
     };
+
+//     What is keyword?
+// const keyword = req.query.keyword || "" reads keyword from the query string of the URL: e.g. GET /api/v1/job?keyword=react. If no keyword is sent, it defaults to an empty string "".
+
+// What does the query object do?
+// The query uses MongoDB $or with regexes to search jobs whose title or description contains the keyword.
+// {$regex: keyword, $options: "i"} means pattern match with case-insensitive (i) option. If keyword = "react", it matches "React", "react.js", "Full Stack React".
+// When keyword === "", the regex "" matches everything, effectively returning all jobs.
 
     const jobs = await Job.find(query)
       .populate("company", "name location")

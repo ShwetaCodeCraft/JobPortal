@@ -1,6 +1,6 @@
 import React from 'react'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/ui/carousel';
-import { Button } from './components/ui/button'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import { Button } from './ui/button'
 
 
 const category = [

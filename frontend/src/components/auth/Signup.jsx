@@ -67,7 +67,7 @@ const Signup = () => {
         if (user) {
             navigate("/");
         }
-    }, [])
+    }, [user])
 
     return (
         <div>

@@ -10,6 +10,7 @@ const Job = () => {
         <p className="text-sm text-gray-500">2 days ago</p>
         <Button variant="outline" className="rounded-full" size="icon">
           <Bookmark />
+          {/* <Bookmark/> //changes */}
         </Button>
       </div>
 

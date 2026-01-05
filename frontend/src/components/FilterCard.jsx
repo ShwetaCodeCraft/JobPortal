@@ -16,7 +16,6 @@ const filterData = [
     array: ["0-40k", "42-1lakh", "1lakh to 5lakh"]
   },
 ]
-//---
 
 const FilterCard = () => {
   return (

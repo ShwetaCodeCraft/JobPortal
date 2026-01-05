@@ -14,7 +14,7 @@ export const registerUser = async (req, res) => {
                 success: false
             });
         }
-
+ 
         // check if user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -103,7 +103,7 @@ export const loginUser = async (req, res) => {
             .status(200)
             .cookie("token", token, {  //Sets token in HTTP-only cookie (can’t be accessed by JavaScript → safer).
                 httpOnly: true,
-                sameSite: "strict",
+                sameSite: "lax",
                 maxAge: 1 * 24 * 60 * 60 * 1000 // 1 day
             })
             .json({
